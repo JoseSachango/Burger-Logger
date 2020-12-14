@@ -1,0 +1,70 @@
+
+  
+
+         <nav class="navbar navbar-dark bg-dark text-light">
+            <a class="navbar-brand" href="/">
+              Burgers Galore!
+            </a>
+          </nav>
+          
+          <div class="row">
+
+
+
+              <div class="col-3 border-right h-100 d-inline-block" style="padding-bottom: 100%;" id="leftColumn" >
+                <ul id="burgersOrdered">
+                    
+                    {{#each dbArray}}
+                        
+                        {{#if devoured}}
+
+                            {{> list_Items }}
+
+                        {{/if}}
+                        
+                
+                       
+                    {{/each}}
+
+
+                </ul>
+
+              </div>
+
+              <div class="col-6 mx-auto">
+    
+                  <div class="mx-auto w-50 mt-5" id="burgerIcon">
+                  
+                      <img class="d-block mx-auto mt-5" src="https://img.icons8.com/doodle/48/000000/hamburger.png"/>
+                      
+                  </div>
+                  
+                  <form class="d-block mx-auto w-50" id="form">
+                    <div class="form-group mx-auto w-25">
+                      <label class=" text-center mx-auto">What kind of burger would you like?</label>
+                      <input type="text" class="form-control" id="formInput" aria-describedby="emailHelp">
+                      <small id="" class="form-text text-muted ">See your database results by clicking submit.</small>
+                    </div>
+                  
+                   
+                    <button type="submit" class="btn btn-primary d-block mx-auto" id="submitButton">Submit</button>
+                  </form>
+    
+              </div>
+
+              <div class="col-3 d-inline-block border-left" id="rightColumn">
+
+                  <ul id="burgersEaten">
+
+                  </ul>
+
+
+              </div>
+              
+
+          </div>
+
+
+          
+
+ 
