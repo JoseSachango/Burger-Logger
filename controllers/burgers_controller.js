@@ -79,7 +79,15 @@ router.put("/api/burgers/:id",function(request,response){
 
         console.log("Data at the controller level when you run the put request: ")
         console.log(dbData)
-        response.redirect("/")
+
+        //response.status(200).redirect("/")
+
+        if (dbData.changedRows == 0) {
+            // If no rows were changed, then the ID must not exist, so 404
+            return response.status(404).end();
+          } else {
+            response.status(200).end();
+          }
     })
 
 

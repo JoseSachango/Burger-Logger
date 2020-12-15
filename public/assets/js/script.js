@@ -55,11 +55,13 @@ $(function(){
             type: "PUT",
             data: object
         }).then((result)=>{
+
+            console.log("The results from the put request are below: ")
             console.log(result)
 
             location.reload()
         })
-        
+
     })
 
 
