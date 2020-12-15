@@ -39,9 +39,9 @@ var orm  = {
     updateOne: function(devoured,id,cb){
 
         console.log()
-        connnection.query("UPDATE burgers SET devoured=? WHERE id=?",[devoured,id],function(err,dbData){
+        connection.query("UPDATE burgers SET devoured=? WHERE id=?",[devoured,id],function(err,dbData){
             if(err) throw err
-            console.log("dbData at the ORM level when you run the put request: ")
+            console.log("Data at the ORM level when you run the put request: ")
             console.log(dbData)
             cb(dbData)
         })
