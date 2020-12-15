@@ -52,7 +52,8 @@ router.post("/api/burgers",function(request,response){
 
         
 
-        response.redirect("/")
+       // response.redirect("/")
+       response.end()
     })
 
  
