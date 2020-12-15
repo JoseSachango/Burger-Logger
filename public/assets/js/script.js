@@ -13,15 +13,21 @@ $(function(){
         console.log("Form submitted")
     
         var burger = $("#formInput").val().trim()
+
+        var burgerObject = {
+            burgerName: burger
+        }
     
         console.log(burger)
     
     
-        $.ajax(`/api/${burger}`,{
-            type:"GET"
+        $.ajax(`/api/burgers`,{
+            type:"POST",
+            data: burgerObject
         }).then((renderedWebpage)=>{
     
-            //console.log(renderedWebpage)
+            console.log(renderedWebpage)
+            location.reload()
             
         })
     

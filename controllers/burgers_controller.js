@@ -7,43 +7,45 @@ var router = express.Router();
 
 
 
-router.get("/index",function(request,response){
-   
-    
-    response.render("index")
-
-    
-})
-
-
-
 router.get("/",function(request,response){
    
-  
+    burgers.all("burgers",function(dbData){
+        
+        console.log("Data at the controller level: ")
+        console.log(dbData)
+        
+        var object = {
+            dbArray: dbData
+        }
 
-  
-
-    response.render("index")
+        response.render("index",object)
+    })
 
     
-})
+});
 
 
 
-router.get("/api/:burger",function(request,response){
-   
-    var burger = request.params.burger
-    var condition = "WHERE burger_name="+`'${burger}'`
 
-    burgers.all("burgers",condition,function(dbData){
+
+
+
+router.post("/api/burgers",function(request,response){
+    console.log(" The /api/burgers route hit")
+    var burgerName = request.body.burgerName
+    var devoured = 0
+    
+    var values =[burgerName]
+
+    burgers.create("burgers",values,function(dbData){
 
        
         console.log("Data at the router level: ")
 
         console.log(dbData)
 
-        console.log("This is the condition: ")
-        console.log(condition)
+        console.log("These are the values: ")
+        console.log(values)
 
         var object = {
 
@@ -52,7 +54,9 @@ router.get("/api/:burger",function(request,response){
 
         console.log(object)
 
-        response.render("index",object)
+        //response.render("index",object)
+
+        //response.redirect("/")
     })
 
  
