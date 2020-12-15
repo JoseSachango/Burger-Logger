@@ -36,6 +36,33 @@ $(function(){
     })
 
 
+    $(".dlt-btn").on("click",function(event){
+        console.log("The eat button has been clicked")
+        
+        var id = $(this).data("eat")
+
+        console.log("This is the id for the eat button: ")
+        console.log(id)
+
+        var newDevoured = 1;
+
+        var object = {
+            burgerId: id,
+            devouredStatus: newDevoured 
+        }
+
+        $.ajax("/api/burgers/"+id,{
+            type: "PUT",
+            data: object
+        }).then((result)=>{
+            console.log(result)
+
+            location.reload()
+        })
+        
+    })
+
+
 
 
 

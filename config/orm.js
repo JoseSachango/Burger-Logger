@@ -12,7 +12,7 @@ var orm  = {
             console.log("This is the table: ")
             console.log(table)
 
-            console.log("Data at the ORM level: ")
+            console.log("Data at the ORM level when you run the get request: ")
             console.log(dbData)
             cb(dbData);
         })
@@ -22,9 +22,9 @@ var orm  = {
 
 
     insertOne: function(table,values,cb){
-        connection.query("INSERT INTO ?? (burger_name) VALUES (?)",[table,values],function(err,dbData){
+        connection.query("INSERT INTO ?? (burger_name, devoured) VALUES (?)",[table,values],function(err,dbData){
 
-            console.log("dbData at the ORM level: ")
+            console.log("dbData at the ORM level when you run the post request: ")
             console.log(dbData)
 
             if(err) throw err
@@ -36,9 +36,18 @@ var orm  = {
 
     },
 
-    updateOne: function(){
+    updateOne: function(devoured,id,cb){
 
-    }
+        console.log()
+        connnection.query("UPDATE burgers SET devoured=? WHERE id=?",[devoured,id],function(err,dbData){
+            if(err) throw err
+            console.log("dbData at the ORM level when you run the put request: ")
+            console.log(dbData)
+            cb(dbData)
+        })
+    },
+
+    
 }
 
 

@@ -17,8 +17,16 @@
                     {{#each dbArray}}
                         
                         
+                        {{#if devoured}}
 
-                            {{> list_Items }}
+                           
+
+                        {{else}}
+
+                            
+                            {{> list_Items_Waiting }}
+
+                        {{/if}}
 
                         
                         
@@ -55,6 +63,26 @@
               <div class="col-3 d-inline-block border-left" id="rightColumn">
 
                   <ul id="burgersEaten">
+                      
+                       {{#each dbArray}}
+                        
+                            
+                            {{#if devoured}}
+
+                               {{> list_Items_Eaten }}
+                                
+
+                            {{else}}
+                                
+
+
+                            {{/if}}
+
+                            
+                            
+                
+                       
+                        {{/each}}
 
                   </ul>
 

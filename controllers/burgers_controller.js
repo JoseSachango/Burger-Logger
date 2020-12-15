@@ -11,7 +11,7 @@ router.get("/",function(request,response){
    
     burgers.all("burgers",function(dbData){
         
-        console.log("Data at the controller level: ")
+        console.log("Data at the controller level when you run the get request: ")
         console.log(dbData)
         
         var object = {
@@ -35,28 +35,24 @@ router.post("/api/burgers",function(request,response){
     var burgerName = request.body.burgerName
     var devoured = 0
     
-    var values =[burgerName]
+    var values =[burgerName,devoured]
 
     burgers.create("burgers",values,function(dbData){
 
        
-        console.log("Data at the router level: ")
+        console.log("Data at the router level when you run the post request: ")
 
         console.log(dbData)
 
-        console.log("These are the values: ")
+        console.log("These are the values when you run the post request: ")
         console.log(values)
 
-        var object = {
 
-            dbArray: dbData
-        }
+    
 
-        console.log(object)
+        
 
-        //response.render("index",object)
-
-        //response.redirect("/")
+        response.redirect("/")
     })
 
  
@@ -64,6 +60,32 @@ router.post("/api/burgers",function(request,response){
     
 
     
+})
+
+
+
+
+
+router.put("/api/burgers/:id",function(request,response){
+
+    var id = request.body.burgerId
+    var devoured = request.body.devouredStatus
+
+    console.log("You hit the put router: ")
+    console.log(devoured)
+    console.log(id)
+
+    burgers.update(devoured,id,function(dbData){
+
+        console.log("Data at the controller level when you run the put request: ")
+        console.log(dbData)
+        response.redirect("/")
+    })
+
+
+
+    
+
 })
 
 
